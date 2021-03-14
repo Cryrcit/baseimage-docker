@@ -1,7 +1,7 @@
 QEMU_ARCH=x86_64
 PLATFORM=linux/amd64
 
-VERSION ?= focal-1.0.0-pre
+VERSION ?= 20.04-1.0.0
 ifdef BASE_IMAGE
 	BUILD_ARG = --build-arg BASE_IMAGE=$(BASE_IMAGE)
 	ifndef NAME
@@ -23,13 +23,13 @@ VERSION_ARG ?= $(VERSION)
 
 .PHONY: all build test tag_latest release ssh
 
-all: build 
+all: build tag_latest release
 
 build:
 #	echo "docker build --no-cache -t $(NAME):$(VERSION_ARG) $(BUILD_ARG) --build-arg QEMU_ARCH=$(QEMU_ARCH) --platform $(PLATFORM) image"
 	./build.sh
 #	docker build --no-cache -t $(NAME):$(VERSION_ARG) $(BUILD_ARG) --build-arg QEMU_ARCH=$(QEMU_ARCH) --platform $(PLATFORM) --rm image
-	docker build --no-cache -t $(NAME):$(VERSION_ARG) $(BUILD_ARG) --build-arg QEMU_ARCH=$(QEMU_ARCH) --platform $(PLATFORM) --rm=true image
+	docker build --no-cache -t $(NAME):$(VERSION_ARG) $(BUILD_ARG) --build-arg QEMU_ARCH=$(QEMU_ARCH) --platform $(PLATFORM)      image
 
 build_multiarch:
 	env NAME=$(NAME) VERSION=$(VERSION_ARG) ./build-multiarch.sh
