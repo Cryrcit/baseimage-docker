@@ -52,6 +52,6 @@ case $(lsb_release -is) in
     ;;
 esac
 locale-gen en_US
-update-locale LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8
-echo -n en_US.UTF-8 > /etc/container_environment/LANG
-echo -n en_US.UTF-8 > /etc/container_environment/LC_CTYPE
+update-locale LANG=it_IT.UTF-8 LC_CTYPE=it_IT.UTF-8
+echo -n it_IT.UTF-8 > /etc/container_environment/LANG
+echo -n it_IT.UTF-8 > /etc/container_environment/LC_CTYPE
