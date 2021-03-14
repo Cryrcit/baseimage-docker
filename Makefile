@@ -5,7 +5,7 @@ ifdef BASE_IMAGE
 		NAME = cryrcit/baseimage-$(subst :,-,${BASE_IMAGE})
 	endif
 else
-	NAME ?= phusion/baseimage
+	NAME ?= cryrcit/baseimage
 endif
 ifdef TAG_ARCH
 	# VERSION_ARG = $(VERSION)-$(subst /,-,$(subst :,-,${BASE_IMAGE}))-$(TAG_ARCH)
