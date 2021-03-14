@@ -1,4 +1,5 @@
 QEMU_ARCH=x86_64
+PLATFORM=linux/amd64
 
 VERSION ?= focal-1.0.0-pre
 ifdef BASE_IMAGE
