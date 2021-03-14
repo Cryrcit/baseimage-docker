@@ -1,7 +1,9 @@
 QEMU_ARCH=x86_64
-PLATFORM=linux/amd64
+PLATFORM ?= linux/amd64
 
-VERSION ?= 20.04-1.0.0
+VERSION ?= 20.04
+TAG_ARCH ?= 1.0.0
+
 ifdef BASE_IMAGE
 	BUILD_ARG = --build-arg BASE_IMAGE=$(BASE_IMAGE)
 	ifndef NAME
@@ -10,6 +12,7 @@ ifdef BASE_IMAGE
 else
 	NAME ?= cryrcit/baseimage
 endif
+
 ifdef TAG_ARCH
 	# VERSION_ARG = $(VERSION)-$(subst /,-,$(subst :,-,${BASE_IMAGE}))-$(TAG_ARCH)
 	VERSION_ARG = $(VERSION)-$(TAG_ARCH)
