@@ -1,12 +1,15 @@
-QEMU_ARCH=x86_64
+#QEMU_ARCH=x86_64
+
+QEMU_ARCH=$QEMU_ARCH
+
 PLATFORM ?= linux/amd64
 
 VERSION ?= 20.04
 #BASE_IMAGE=
 TAG_ARCH ?= 1.0
 
-NEW_USER ?= cryrc
-NEW_PASWD ?= cryrc
+NEW_USER ?= cryrcit
+NEW_PASWD ?= cryrcit
 
 ifdef BASE_IMAGE
 	BUILD_ARG = --build-arg BASE_IMAGE=$(BASE_IMAGE)

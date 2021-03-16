@@ -1,0 +1,1 @@
+make build BASE_IMAGE=ubuntu:20.04 NAME=cryrcit/baseimage QEMU_ARCH=amd64 test
