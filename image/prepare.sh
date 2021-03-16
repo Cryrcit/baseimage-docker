@@ -31,6 +31,9 @@ ln -sf /bin/true /usr/bin/ischroot
 # apt-utils fix for Ubuntu 16.04
 $minimal_apt_get_install apt-utils
 
+# sudo fix fodoers user
+$minimal_apt_get_install sudo
+
 ## Install HTTPS support for APT.
 $minimal_apt_get_install apt-transport-https ca-certificates
 
