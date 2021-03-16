@@ -1,1 +1,6 @@
 make build BASE_IMAGE=ubuntu:20.04 NAME=cryrcit/baseimage QEMU_ARCH=amd64 test
+
+
+
+per lanciare (rum) il container eseguire :
+docker run -d --name prova -p 56022:22 <numero immagine>
