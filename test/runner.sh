@@ -20,6 +20,7 @@ sleep 1
 
 echo " --> Obtaining SSH port number"
 SSHPORT=`docker inspect --format='{{(index (index .NetworkSettings.Ports "22/tcp") 0).HostPort}}' "$ID"`
+
 if [[ "$SSHPORT" = "" ]]; then
 	abort "Unable to obtain container SSH port number"
 fi

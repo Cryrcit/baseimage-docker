@@ -5,6 +5,9 @@ VERSION ?= 20.04
 #BASE_IMAGE=
 TAG_ARCH ?= 1.0
 
+NEW_USER ?= cryrc
+NEW_PASWD ?= cryrc
+
 ifdef BASE_IMAGE
 	BUILD_ARG = --build-arg BASE_IMAGE=$(BASE_IMAGE)
 	ifndef NAME
@@ -29,13 +32,16 @@ VERSION_ARG ?= $(VERSION)
 .PHONY: all build test tag_latest release ssh
 
 #    aggiungi le attivià da fare prima di lanciareil comando make
-all: build 
+all: test
 
 build:
 #	echo "docker build --no-cache -t $(NAME):$(VERSION_ARG) $(BUILD_ARG) --build-arg QEMU_ARCH=$(QEMU_ARCH) --platform $(PLATFORM) image"
 	./build.sh
-#	docker build --no-cache -t $(NAME):$(VERSION_ARG) $(BUILD_ARG) --build-arg QEMU_ARCH=$(QEMU_ARCH) --platform $(PLATFORM) --rm image
-	docker build --no-cache -t $(NAME):$(VERSION_ARG) $(BUILD_ARG) --build-arg QEMU_ARCH=$(QEMU_ARCH) --platform $(PLATFORM) --rm image
+	docker build --no-cache -t $(NAME):$(VERSION_ARG) $(BUILD_ARG) \
+		--build-arg QEMU_ARCH=$(QEMU_ARCH) \
+		--build-arg NEW_USER=$(NEW_USER) \
+		--build-arg NEW_PASWD=$(NEW_PASWD) \
+		--platform $(PLATFORM) --rm image
 
 build_multiarch:
 	env NAME=$(NAME) VERSION=$(VERSION_ARG) ./build-multiarch.sh
