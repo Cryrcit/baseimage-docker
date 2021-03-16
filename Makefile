@@ -31,8 +31,7 @@ VERSION_ARG ?= $(VERSION)
 
 .PHONY: all build test tag_latest release ssh
 
-#    aggiungi le attivià da fare prima di lanciareil comando make
-all: test
+all: build
 
 build:
 #	echo "docker build --no-cache -t $(NAME):$(VERSION_ARG) $(BUILD_ARG) --build-arg QEMU_ARCH=$(QEMU_ARCH) --platform $(PLATFORM) image"
