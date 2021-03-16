@@ -3,7 +3,7 @@ PLATFORM ?= linux/amd64
 
 VERSION ?= 20.04
 #BASE_IMAGE=
-TAG_ARCH ?= 1.0.0
+TAG_ARCH ?= 1.0
 
 ifdef BASE_IMAGE
 	BUILD_ARG = --build-arg BASE_IMAGE=$(BASE_IMAGE)
@@ -28,7 +28,8 @@ VERSION_ARG ?= $(VERSION)
 
 .PHONY: all build test tag_latest release ssh
 
-all: build test tag_latest release
+#    aggiungi le attivià da fare prima di lanciareil comando make
+all: build 
 
 build:
 #	echo "docker build --no-cache -t $(NAME):$(VERSION_ARG) $(BUILD_ARG) --build-arg QEMU_ARCH=$(QEMU_ARCH) --platform $(PLATFORM) image"

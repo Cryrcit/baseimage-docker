@@ -13,6 +13,9 @@ RUN /bd_build/prepare.sh && \
     /bd_build/utilities.sh && \
     /bd_build/cleanup.sh
 
+#For resolv syslog-ng pronlem
+RUN sed -i 's/version: 3.13/version: 3.25/g' /etc/syslog-ng/syslog-ng.conf
+
 ENV DEBIAN_FRONTEND="teletype" \
     LANG="en_US.UTF-8" \
     LANGUAGE="en_US:en" \
