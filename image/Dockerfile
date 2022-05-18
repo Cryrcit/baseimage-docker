@@ -1,9 +1,7 @@
-ARG BASE_IMAGE=ubuntu:20.04
+ARG BASE_IMAGE=$BASE_IMAGE
 
 FROM $BASE_IMAGE
 
-ARG NEW_USER=$NEW_USER
-ARG NEW_PASWD=$NEW_PASWD
 ARG QEMU_ARCH=$QEMU_ARCH
 
 ADD x86_64_qemu-$QEMU_ARCH-static.tar.gz /usr/bin
@@ -14,7 +12,7 @@ RUN /bd_build/prepare.sh && \
     /bd_build/system_services.sh && \
     /bd_build/utilities.sh && \
     /bd_build/cleanup.sh
-
+ 
 #Cryrcit -> Personalized Dockerfile
 
 #For resolv syslog-ng problem
@@ -32,8 +30,8 @@ RUN service ssh restart
 
 
 #Add user
-RUN useradd -rm -d /home/$NEW_USER -s /bin/bash -g root -G sudo -u 1000 $NEW_USER
-RUN echo $NEW_USER:$NEW_PASWD | chpasswd
+RUN useradd -rm -d /home/cryrcit -s /bin/bash -g root -G sudo -u 1000 cryrcit
+RUN echo cryrcit:cryrcit | chpasswd
 
 #Port Exposed
 EXPOSE 22/tcp

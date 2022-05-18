@@ -8,9 +8,6 @@ VERSION ?= 20.04
 #BASE_IMAGE=
 TAG_ARCH ?= 1.0
 
-NEW_USER ?= cryrcit
-NEW_PASWD ?= cryrcit
-
 ifdef BASE_IMAGE
 	BUILD_ARG = --build-arg BASE_IMAGE=$(BASE_IMAGE)
 	ifndef NAME
@@ -41,9 +38,7 @@ build:
 	./build.sh
 	docker build --no-cache -t $(NAME):$(VERSION_ARG) $(BUILD_ARG) \
 		--build-arg QEMU_ARCH=$(QEMU_ARCH) \
-		--build-arg NEW_USER=$(NEW_USER) \
-		--build-arg NEW_PASWD=$(NEW_PASWD) \
-		--platform $(PLATFORM) --rm image
+		--platform $(PLATFORM) --rm=true image
 
 build_multiarch:
 	env NAME=$(NAME) VERSION=$(VERSION_ARG) ./build-multiarch.sh
